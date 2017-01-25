@@ -59,6 +59,14 @@ def create_inner_json_subtree(inner_json_value):
     return inner_json
 
 
+def __create_inner_json(tree, index, inner_json_value):
+    if index == len(tree) + 1:
+        inner_json = "{\"" + inner_json_value[1] + "\":\"" + inner_json_value[0] + "\"}"
+    else:
+        inner_json = "{\"" + inner_json_value[1] + "\":\"" + inner_json_value[0] + "\"},"
+    return inner_json
+
+
 def get_json(data, grammar=None):
     """Provides a JSON output for a given list
     Arguments:
