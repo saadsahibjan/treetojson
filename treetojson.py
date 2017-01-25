@@ -43,6 +43,7 @@ def __depict_tree(data=None, words=None, label=None, grammar=None):
             ['NN', 'NN', 'NN', 'NN', 'VB']
         - grammar is optional, it accepts NLTK regexp grammar.
     """
+    LOG.info('Inside __depict_tree()')
 
     if (words is None or label is None) and data is None:
         raise ValueError("Words and labels or data containing list should be provided.")
@@ -68,6 +69,7 @@ def __depict_tree(data=None, words=None, label=None, grammar=None):
 
 
 def __create_inner_json_subtree(inner_json_value):
+    LOG.info('Inside __create_inner_json_subtree')
     inner_json = "["
     for index in xrange(len(inner_json_value)):
         if index == len(inner_json_value) - 1:
@@ -79,6 +81,7 @@ def __create_inner_json_subtree(inner_json_value):
 
 
 def __create_inner_json(tree, index, inner_json_value):
+    LOG.info('Inside __create_inner_json')
     if index == len(tree) + 1:
         inner_json = "{\"" + inner_json_value[1] + "\":\"" + inner_json_value[0] + "\"}"
     else:
@@ -87,6 +90,7 @@ def __create_inner_json(tree, index, inner_json_value):
 
 
 def __create_outer_json(tree, subtree, index, inner_json):
+    LOG.info('Inside __create_outer_json')
     if index == len(tree) + 1:
         outer_json = "{\"" + subtree.label() + "\":" + inner_json + "}"
     else:
@@ -95,6 +99,7 @@ def __create_outer_json(tree, subtree, index, inner_json):
 
 
 def __traverse_tree(tree):
+    LOG.info('Inside __traverse_tree')
     json_value = ""
     index = 1
     for subtree in tree:
