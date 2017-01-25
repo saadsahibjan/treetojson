@@ -12,6 +12,7 @@ version = __version__
 
 import logging
 import nltk
+import json
 
 from nltk.chunk.regexp import *
 
@@ -73,6 +74,31 @@ def create_outer_json(tree, subtree, index, inner_json):
     else:
         outer_json = "{\"" + subtree.label() + "\":" + inner_json + "},"
     return outer_json
+
+
+def traverse_tree(tree):
+    json_value = ""
+    index = 1
+    for subtree in tree:
+        index += 1
+        if type(subtree) == nltk.tree.Tree:
+            if subtree.height() > 2:
+                if index == len(tree) + 1:
+                    outer_json = "{\"" + subtree.label() + "\": [" + traverse_tree(subtree) + "]}"
+                else:
+                    outer_json = "{\"" + subtree.label() + "\": [" + traverse_tree(subtree) + "]},"
+            else:
+                print subtree
+                print type(subtree)
+                inner_json_value = json.loads(json.dumps(subtree, ensure_ascii=False))
+                print inner_json_value
+                inner_json = create_inner_json_subtree(inner_json_value)
+                outer_json = create_outer_json(tree, subtree, index, inner_json)
+        else:
+            inner_json_value = json.loads(json.dumps(subtree, ensure_ascii=False))
+            outer_json = create_inner_json(tree, index, inner_json_value)
+        json_value += outer_json
+    return json_value
 
 
 def get_json(data, grammar=None):
