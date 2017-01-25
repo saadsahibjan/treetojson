@@ -49,7 +49,7 @@ def depict_tree(data, grammar=None):
     return parser.parse(data)
 
 
-def create_inner_json_subtree(inner_json_value):
+def __create_inner_json_subtree(inner_json_value):
     inner_json = "["
     for index in xrange(len(inner_json_value)):
         if index == len(inner_json_value) - 1:
@@ -60,7 +60,7 @@ def create_inner_json_subtree(inner_json_value):
     return inner_json
 
 
-def create_inner_json(tree, index, inner_json_value):
+def __create_inner_json(tree, index, inner_json_value):
     if index == len(tree) + 1:
         inner_json = "{\"" + inner_json_value[1] + "\":\"" + inner_json_value[0] + "\"}"
     else:
@@ -68,7 +68,7 @@ def create_inner_json(tree, index, inner_json_value):
     return inner_json
 
 
-def create_outer_json(tree, subtree, index, inner_json):
+def __create_outer_json(tree, subtree, index, inner_json):
     if index == len(tree) + 1:
         outer_json = "{\"" + subtree.label() + "\":" + inner_json + "}"
     else:
@@ -76,7 +76,7 @@ def create_outer_json(tree, subtree, index, inner_json):
     return outer_json
 
 
-def traverse_tree(tree):
+def __traverse_tree(tree):
     json_value = ""
     index = 1
     for subtree in tree:
@@ -84,19 +84,19 @@ def traverse_tree(tree):
         if type(subtree) == nltk.tree.Tree:
             if subtree.height() > 2:
                 if index == len(tree) + 1:
-                    outer_json = "{\"" + subtree.label() + "\": [" + traverse_tree(subtree) + "]}"
+                    outer_json = "{\"" + subtree.label() + "\": [" + __traverse_tree(subtree) + "]}"
                 else:
-                    outer_json = "{\"" + subtree.label() + "\": [" + traverse_tree(subtree) + "]},"
+                    outer_json = "{\"" + subtree.label() + "\": [" + __traverse_tree(subtree) + "]},"
             else:
                 print subtree
                 print type(subtree)
                 inner_json_value = json.loads(json.dumps(subtree, ensure_ascii=False))
                 print inner_json_value
-                inner_json = create_inner_json_subtree(inner_json_value)
-                outer_json = create_outer_json(tree, subtree, index, inner_json)
+                inner_json = __create_inner_json_subtree(inner_json_value)
+                outer_json = __create_outer_json(tree, subtree, index, inner_json)
         else:
             inner_json_value = json.loads(json.dumps(subtree, ensure_ascii=False))
-            outer_json = create_inner_json(tree, index, inner_json_value)
+            outer_json = __create_inner_json(tree, index, inner_json_value)
         json_value += outer_json
     return json_value
 
