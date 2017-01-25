@@ -37,8 +37,20 @@ def __depict_tree(data=None, words=None, label=None, grammar=None):
         Arguments:
         - data contains a list which should look like,
             [('I', 'NN'), ('am', 'NN'), ('a', 'NN'), ('good', 'VB'), ('boy', 'NN')]
+        - words contains a split sentence, a sentence can be splitted and sent as an argument,
+            ['I', 'am', 'a', 'good', 'boy']
+        - label contains the specific label of the words given.
+            ['NN', 'NN', 'NN', 'NN', 'VB']
         - grammar is optional, it accepts NLTK regexp grammar.
     """
+
+    if (words is None or label is None) and data is None:
+        raise ValueError("Words and labels or data containing list should be provided.")
+
+    if words and label:
+        if len(words) != len(label):
+            raise ValueError("Lengths of words and labels should be equal")
+
     if words is None and label is None and data:
         sentence = data
     else:
