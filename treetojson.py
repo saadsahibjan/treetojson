@@ -32,21 +32,27 @@ def set_debug(debug=True, filename='dicttoxml.log'):
         print('Debug mode is off.')
 
 
-def depict_tree(data, grammar=None):
+def __depict_tree(data=None, words=None, label=None, grammar=None):
     """Converts the provided list into a tree structure
-    Arguments:
-    - data contains a list which should look like,
-        [('I', 'NN'), ('am', 'NN'), ('a', 'NN'), ('good', 'VB'), ('boy', 'NN')]
-    - grammar is optional, it accepts NLTK regexp grammar.
+        Arguments:
+        - data contains a list which should look like,
+            [('I', 'NN'), ('am', 'NN'), ('a', 'NN'), ('good', 'VB'), ('boy', 'NN')]
+        - grammar is optional, it accepts NLTK regexp grammar.
     """
-    LOG.info('Inside depict_tree()')
-
-    if grammar:
-        parser = RegexpParser(grammar)
+    if words is None and label is None and data:
+        sentence = data
     else:
+        sentence = []
+        for index in xrange(len(words)):
+            sentence.append((words[index], label[index]))
+
+    if grammar is None:
         parser = RegexpParser('''
-                ''')
-    return parser.parse(data)
+                        ''')
+    else:
+        parser = RegexpParser(grammar)
+
+    return parser.parse(sentence)
 
 
 def __create_inner_json_subtree(inner_json_value):
@@ -88,10 +94,7 @@ def __traverse_tree(tree):
                 else:
                     outer_json = "{\"" + subtree.label() + "\": [" + __traverse_tree(subtree) + "]},"
             else:
-                print subtree
-                print type(subtree)
                 inner_json_value = json.loads(json.dumps(subtree, ensure_ascii=False))
-                print inner_json_value
                 inner_json = __create_inner_json_subtree(inner_json_value)
                 outer_json = __create_outer_json(tree, subtree, index, inner_json)
         else:
@@ -101,7 +104,7 @@ def __traverse_tree(tree):
     return json_value
 
 
-def get_json(data, grammar=None):
+def get_json(data=None, words=None, label=None, grammar=None):
     """Provides a JSON output for a given list
     Arguments:
     - data contains a list which should look like,
@@ -110,4 +113,6 @@ def get_json(data, grammar=None):
     """
     LOG.info('Inside get_json()')
 
-    tree = depict_tree(data, grammar=grammar)
+    tree = __depict_tree(data=data, words=words, label=label, grammar=grammar)
+    json_value = __traverse_tree(tree)
+    return "{\"SENTENCE\":[" + json_value + "]}"
