@@ -11,6 +11,7 @@ __version__ = '0.1'
 version = __version__
 
 import logging
+import nltk
 
 from nltk.chunk.regexp import *
 
@@ -45,6 +46,17 @@ def depict_tree(data, grammar=None):
         parser = RegexpParser('''
                 ''')
     return parser.parse(data)
+
+
+def create_inner_json_subtree(inner_json_value):
+    inner_json = "["
+    for index in xrange(len(inner_json_value)):
+        if index == len(inner_json_value) - 1:
+            inner_json += "{\"" + inner_json_value[index][1] + "\":\"" + inner_json_value[index][0] + "\"}"
+        else:
+            inner_json += "{\"" + inner_json_value[index][1] + "\":\"" + inner_json_value[index][0] + "\"},"
+    inner_json += "]"
+    return inner_json
 
 
 def get_json(data, grammar=None):
