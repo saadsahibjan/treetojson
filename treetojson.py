@@ -28,3 +28,13 @@ def set_debug(debug=True, filename='dicttoxml.log'):
     else:
         logging.basicConfig(level=logging.WARNING)
         print('Debug mode is off.')
+
+
+def depict_tree(data, grammar=None):
+    if grammar:
+        parser = RegexpParser(grammar)
+    else:
+        parser = RegexpParser('''
+                ''')
+    tree = parser.parse(data)
+
