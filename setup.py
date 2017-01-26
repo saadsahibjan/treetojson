@@ -1,12 +1,12 @@
 from distutils.core import setup
 
-version = '0.0.4'
+version = '0.0.16'
 
 setup(
     name='treetojson',
     version=version,
-    description='Converts a tree structure in to a valid JSON',
-    #long_description=open('README.md').read(),
+    description='Converts a tree structure into a valid JSON',
+    long_description=open('README.rst').read(),
     author='Saad Sahibjan',
     author_email='saad.sahibjan@gmail.com',
     license='MIT',
