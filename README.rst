@@ -4,9 +4,9 @@ treetojson
 .. image:: https://travis-ci.org/saadsahibjan/treetojson.svg?branch=master
     :target: https://travis-ci.org/saadsahibjan/treetojson
     
-- Simple Library to map a tree structure to a valid JSON object. 
-- This treetojson module is [published on the Python Package Index](<https://pypi.python.org/pypi/treetojson>)
-
+-  Simple Library to map a tree structure to a valid JSON object.
+-  This treetojson module is `published on the Python Package
+   Index <https://pypi.python.org/pypi/treetojson>`__
 
 Summary
 =======
@@ -15,8 +15,9 @@ treetojson is a helpful in converting a given tree structure into a
 valid JSON. Using this a tree strcuture can be easily interpreted to a
 valid JSON. Further explaination on how the input should be given and
 the output are explained under Basic Usage. This is pure Python code
-with a single dependency of [NLTK](http://www.nltk.org/). This can
-also be used along with [NLTK RegexpParser](http://www.nltk.org/_modules/nltk/chunk/regexp.html).
+with a single dependency of `NLTK <http://www.nltk.org/>`__. This can
+also be used along with `NLTK
+RegexpParser <http://www.nltk.org/_modules/nltk/chunk/regexp.html>`__.
 
 This was a mainly developed due to a problem faced during a project on
 Part-of-Speech (POS) tagger which is a part of Natural Language
@@ -37,12 +38,17 @@ front-end.
 Installation
 ============
 
-The treetojson module is [published on the Python Package Index](<https://pypi.python.org/pypi/treetojson>), so you can install
+The treetojson module is `published on the Python Package
+Index <https://pypi.python.org/pypi/treetojson>`__, so you can install
 it using ``pip`` or ``easy_install``.
+
+::
 
     pip install treetojson
 
 or
+
+::
 
     easy_install treetojson
 
@@ -57,6 +63,8 @@ Example1
 When a list containing words and it's appropriate tags are provided as
 follow:
 
+::
+
     >>> import treetojson
     >>> sentence = [('Everyone', 'NN'), ('knows', 'VBZ'), ('an', 'DT'), ('Elephant', 'NN'), ('is', 'VBZ'), ('larger', 'JJR'),
      ('than', 'IN'), ('a', 'DT'), ('Dog', 'NN')]
@@ -69,6 +77,8 @@ Example2
 
 When a list containing words with appropriate tags along with a grammar
 is provided:
+
+::
 
     >>> import treetojson
     >>> sentence = [('Everyone', 'NN'), ('knows', 'VBZ'), ('an', 'DT'), ('Elephant', 'NN'), ('is', 'VBZ'), ('larger', 'JJR'), 
@@ -89,6 +99,8 @@ Example3
 
 When words and labels or tags are seperately provided:
 
+::
+
     >>> import treetojson
     >>> words = ['Everyone', 'knows', 'an', 'Elephant', 'is', 'larger', 'than', 'a', 'Dog']
     >>> labels = ['NN', 'VBZ', 'DT', 'NN', 'VBZ', 'JJR', 'IN', 'DT', 'NN']
@@ -101,6 +113,8 @@ Example4
 
 When words and labels or tags seperately along with a grammar is
 provided:
+
+::
 
     >>> import treetojson
     >>> words = ['Everyone', 'knows', 'an', 'Elephant', 'is', 'larger', 'than', 'a', 'Dog']
@@ -121,12 +135,16 @@ Debugging
 
 You can enable debugging information.
 
+::
+
     >>> import treetojson
     >>> treetojson.set_debug()
     Debug mode is on. Events are logged at: treetojson.log
 
 To turn debug mode off, call ``set_debug`` with an argument of
 ``False``:
+
+::
 
     >>> treetojson.set_debug(False)
     Debug mode is off.
@@ -135,14 +153,15 @@ If you encounter any errors in the code, please file an issue on github:
 https://github.com/saadsahibjan/treetojson/issues
 
 Contributing guide
-===================
+==================
 
-Use guidelines provided in [CONTRIBUTING.md](https://github.com/saadsahibjan/treetojson/blob/master/CONTRIBUTING.md)
+Use guidelines provided in
+`CONTRIBUTING.md <https://github.com/saadsahibjan/treetojson/blob/master/CONTRIBUTING.md>`__
 
 License
 =======
 
-[MIT](https://github.com/saadsahibjan/treetojson/blob/master/LICENSE)
+`MIT <https://github.com/saadsahibjan/treetojson/blob/master/LICENSE>`__
 
 Author
 ======
