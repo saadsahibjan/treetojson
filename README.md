@@ -1,3 +1,10 @@
+treetojson [![Build Status](https://travis-ci.org/saadsahibjan/treetojson.svg?branch=master)](https://travis-ci.org/saadsahibjan/treetojson)
+==========
+
+- Simple Library to map a tree structure to a valid JSON object. 
+- This treetojson module is [published on the Python Package Index](<https://pypi.python.org/pypi/treetojson>)
+
+
 Summary
 =======
 
