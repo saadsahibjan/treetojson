@@ -124,6 +124,16 @@ To turn debug mode off, call ``set_debug`` with an argument of
 If you encounter any errors in the code, please file an issue on github:
 https://github.com/saadsahibjan/treetojson/issues
 
+Contributing guide
+===================
+
+Use guidelines provided in [CONTRIBUTING.md](https://github.com/saadsahibjan/treetojson/blob/master/CONTRIBUTING.md)
+
+License
+=======
+
+[MIT](https://github.com/saadsahibjan/treetojson/blob/master/LICENSE)
+
 Author
 ======
 
