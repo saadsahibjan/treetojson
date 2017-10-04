@@ -132,4 +132,4 @@ def get_json(data=None, words=None, label=None, grammar=None):
 
     tree = __depict_tree(data=data, words=words, label=label, grammar=grammar)
     json_value = __traverse_tree(tree)
-    return "{\"SENTENCE\":[" + json_value + "]}"
+    return json.loads("{\"SENTENCE\":[" + json_value + "]}")
