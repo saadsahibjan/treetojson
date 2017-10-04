@@ -1,6 +1,6 @@
 from distutils.core import setup
 
-version = '0.0.16'
+version = '0.9.0'
 
 setup(
     name='treetojson',
@@ -17,7 +17,6 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 3',
     ],
     install_requires=['nltk'],
 )
