@@ -69,8 +69,8 @@ follow:
     >>> sentence = [('Everyone', 'NN'), ('knows', 'VBZ'), ('an', 'DT'), ('Elephant', 'NN'), ('is', 'VBZ'), ('larger', 'JJR'),
      ('than', 'IN'), ('a', 'DT'), ('Dog', 'NN')]
     >>> print treetojson.get_json(data=sentence)
-    {"SENTENCE":[{"NN":"Everyone"},{"VBZ":"knows"},{"DT":"an"},{"NN":"Elephant"},{"VBZ":"is"}, {"JJR":"larger"},
-    {"IN":"than"},{"DT":"a"},{"NN":"Dog"}]}
+    {u'SENTENCE': [{u'NN': u'Everyone'}, {u'VBZ': u'knows'}, {u'DT': u'an'}, {u'NN': u'Elephant'}, {u'VBZ': u'is'}, 
+    {u'JJR': u'larger'}, {u'IN': u'than'}, {u'DT': u'a'}, {u'NN': u'Dog'}]}
 
 Example2
 --------
@@ -91,8 +91,9 @@ is provided:
           COMP: {<DT>?<NP><RB>?<VERB><DT>?<CP><THAN><DT>?<NP>}
         """
     >>> print treetojson.get_json(data=sentence, grammar=grammar)
-    {"SENTENCE":[{"NP":[{"NN":"Everyone"}]},{"VERB":[{"VBZ":"knows"}]},{"COMP": [{"DT":"an"},{"NP":[{"NN":"Elephant"}]},
-    {"VERB":[{"VBZ":"is"}]},{"CP":[{"JJR":"larger"}]},{"THAN":[{"IN":"than"}]},{"DT":"a"},{"NP":[{"NN":"Dog"}]}]}]}
+    {u'SENTENCE': [{u'NP': [{u'NN': u'Everyone'}]}, {u'VERB': [{u'VBZ': u'knows'}]}, {u'COMP': [{u'DT': u'an'}, 
+    {u'NP': [{u'NN': u'Elephant'}]}, {u'VERB': [{u'VBZ': u'is'}]}, {u'CP': [{u'JJR': u'larger'}]}, 
+    {u'THAN': [{u'IN': u'than'}]}, {u'DT': u'a'}, {u'NP': [{u'NN': u'Dog'}]}]}]}
 
 Example3
 --------
@@ -105,8 +106,8 @@ When words and labels or tags are seperately provided:
     >>> words = ['Everyone', 'knows', 'an', 'Elephant', 'is', 'larger', 'than', 'a', 'Dog']
     >>> labels = ['NN', 'VBZ', 'DT', 'NN', 'VBZ', 'JJR', 'IN', 'DT', 'NN']
     >>> print treetojson.get_json(words=words, label=labels)
-    {"SENTENCE":[{"NN":"Everyone"},{"VBZ":"knows"},{"DT":"an"},{"NN":"Elephant"},{"VBZ":"is"},{"JJR":"larger"},{"IN":"than"},
-    {"DT":"a"},{"NN":"Dog"}]}
+    {u'SENTENCE': [{u'NN': u'Everyone'}, {u'VBZ': u'knows'}, {u'DT': u'an'}, {u'NN': u'Elephant'}, {u'VBZ': u'is'}, 
+    {u'JJR': u'larger'}, {u'IN': u'than'}, {u'DT': u'a'}, {u'NN': u'Dog'}]}
 
 Example4
 --------
@@ -127,8 +128,9 @@ provided:
           COMP: {<DT>?<NP><RB>?<VERB><DT>?<CP><THAN><DT>?<NP>}
         """
     >>> print treetojson.get_json(words=words, label=labels, grammar=grammar)
-    {"SENTENCE":[{"NP":[{"NN":"Everyone"}]},{"VERB":[{"VBZ":"knows"}]},{"COMP": [{"DT":"an"},{"NP":[{"NN":"Elephant"}]},
-    {"VERB":[{"VBZ":"is"}]},{"CP":[{"JJR":"larger"}]},{"THAN":[{"IN":"than"}]},{"DT":"a"},{"NP":[{"NN":"Dog"}]}]}]}
+    {u'SENTENCE': [{u'NP': [{u'NN': u'Everyone'}]}, {u'VERB': [{u'VBZ': u'knows'}]}, {u'COMP': [{u'DT': u'an'}, 
+    {u'NP': [{u'NN': u'Elephant'}]}, {u'VERB': [{u'VBZ': u'is'}]}, {u'CP': [{u'JJR': u'larger'}]}, 
+    {u'THAN': [{u'IN': u'than'}]}, {u'DT': u'a'}, {u'NP': [{u'NN': u'Dog'}]}]}]}
 
 Debugging
 =========
